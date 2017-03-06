@@ -115,7 +115,7 @@ class ConnectionPool(object):
         while True:
             try:
                 if num_try <= 0:
-                    sys.exit()
+                    raise ConnectionError('[-] Error: could not connect to fastdfs tracker.')
                 conn_instance = self.conn_class(**self.conn_kwargs)
                 conn_instance.connect()
                 self._conns_created += 1
